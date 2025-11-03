@@ -83,7 +83,7 @@ export default function Turnos() {
         className="btn btn-primary mb-3"
         onClick={() => setMostrarModal(true)}
       >
-        + Nuevo Turno
+        Nuevo Turno +
       </button>
 
       {/* Tabla de turnos */}
@@ -96,36 +96,45 @@ export default function Turnos() {
             <th>Hora</th>
             <th>Estado</th>
             <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {turnos.length === 0 ? (
-            <tr>
-              <td colSpan="6" className="text-center">
-                No hay turnos registrados
-              </td>
-            </tr>
-          ) : (
-            turnos.map((t) => (
-              <tr key={t.id}>
-                <td>{t.paciente}</td>
-                <td>{t.medico}</td>
-                <td>{t.fecha}</td>
-                <td>{t.hora}</td>
-                <td>{t.estado}</td>
-                <td>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => eliminarTurno(t.id)}
-                  >
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+        </tr>
+  </thead>
+  <tbody>
+    {turnos.length === 0 ? (
+      <tr>
+        <td colSpan="6" className="text-center">
+          No hay turnos registrados
+        </td>
+      </tr>
+    ) : (
+      turnos.map((t) => (
+        <tr key={t.id}>
+          <td>{t.paciente}</td>
+          <td>{t.medico}</td>
+          <td>{t.fecha}</td>
+          <td>{t.hora}</td>
+          <td>{t.estado}</td>
+          <td>
+            <button
+              className="btn btn-warning btn-sm 2"
+              onClick={() => cambiarEstado(t.id)}
+            >
+              Cambiar Estado
+            </button>
+
+            {/* Boton para eliminar el turno */}
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => eliminarTurno(t.id)}
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      ))
+    )}
+  </tbody>
+</table>
+
 
       {/* Modal para agregar turno */}
       {mostrarModal && (
