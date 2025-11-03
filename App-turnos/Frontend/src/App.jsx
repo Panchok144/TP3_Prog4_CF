@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import BarraLateral from "./components/BarraLateral";
+import BarraSuperior from "./components/BarraSuperior";
+import Dashboard from "./Pages/Dashboard";
+import Turnos from "./pages/Turnos";
+import Pacientes from "./Pages/Pacientes";
+import Medicos from "./pages/Medicos";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+// Este componente organiza la estructura principal del sistema.
+// Muestra la barra lateral, la barra superior y el área de contenido central.
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="d-flex" style={{ minHeight: "100vh" }}>
+      {/* Barra lateral (azul oscuro con navegación) */}
+      <BarraLateral />
 
-export default App
+      {/* Contenedor principal (parte derecha) */}
+      <div className="flex-grow-1 bg-light">
+        {/* Barra superior blanca con el nombre del sistema */}
+        <BarraSuperior />
+
+        {/* Zona de contenido donde cambian las páginas según la ruta */}
+        <main className="p-4">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/turnos" element={<Turnos />} />
+            <Route path="/pacientes" element={<Pacientes />} />
+            <Route path="/medicos" element={<Medicos />} />
+          </Routes>
+        </main>
+      </div>
+    </div>
+  );
+}
