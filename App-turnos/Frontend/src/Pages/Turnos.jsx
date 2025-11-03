@@ -18,7 +18,7 @@ export default function Turnos() {
 
  
   useEffect(() => {
-    // Datos de ejemplo
+    // Turnos de ejemplo
     const turnosEjemplo = [
       {
         id: 1,
@@ -39,6 +39,25 @@ export default function Turnos() {
     ];
     setTurnos(turnosEjemplo);
   }, []);
+
+ const cambiarEstado = (id) => {
+  const nuevoEst = turnos.map((t) => {
+    if (t.id === id) {
+      let nuevo;
+      if (t.estado === "Pendiente") nuevo = "Confirmado";
+      else if (t.estado === "Confirmado") nuevo = "Cancelado";
+      else nuevo = "Pendiente";
+
+      
+      return { ...t, estado: nuevo };
+    }
+    
+    return t;
+  });
+
+  // Actualizar el estado del turno
+  setTurnos(nuevoEst);
+};
 
   // Maneja el cambio en los campos del formulario
   const manejarCambio = (e) => {
@@ -68,7 +87,7 @@ export default function Turnos() {
     setMostrarModal(false);
   };
 
-  // Elimina un turno según su ID
+  // Elimina un turno segun su ID
   const eliminarTurno = (id) => {
     const filtrados = turnos.filter((t) => t.id !== id);
     setTurnos(filtrados);
@@ -78,7 +97,7 @@ export default function Turnos() {
     <div className="container">
       <h2 className="mb-4">Gestión de Turnos</h2>
 
-      {/* Botón para abrir el modal de nuevo turno */}
+      {/* Boton para abrir el modal de nuevo turno */}
       <button
         className="btn btn-primary mb-3"
         onClick={() => setMostrarModal(true)}
