@@ -2,7 +2,7 @@ import { Router } from "express";
 import { body, param } from "express-validator";
 import { verificarValidaciones } from "../validaciones.js";
 import { db } from "../db.js";
-import { verificarAutenticacion } from "../auth.js";
+import { verificarAutenticacion } from "../middlewares/auth.js";
 
 const r = Router();
 r.use(verificarAutenticacion);

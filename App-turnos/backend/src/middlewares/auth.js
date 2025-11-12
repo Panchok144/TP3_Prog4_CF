@@ -67,11 +67,11 @@ router.post(
     try {
       const { username, password } = req.body;
       const [rows] = await db.execute("SELECT * FROM usuarios WHERE nombre=?", [username]);
-      if (!rows.length) return res.status(400).json({ success: false, error: "Usuario inválido" });
+      if (!rows.length) return res.status(400).json({ success: false, error: "Usuario invalido" });
 
       const user = rows[0];
       const ok = await bcrypt.compare(password, user.password_hash);
-      if (!ok) return res.status(400).json({ success: false, error: "Contraseña inválida" });
+      if (!ok) return res.status(400).json({ success: false, error: "Contraseña invalida" });
 
       const payload = { userId: user.id, roles: ["usuario"] };
       const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES || "4h" });

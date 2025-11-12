@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { db } from "../db.js";
-import { verificarAutenticacion } from "../auth.js";
+import { verificarAutenticacion } from "../middlewares/auth.js";
 import { body, param } from "express-validator";
 import { verificarValidaciones } from "../validaciones.js";
 

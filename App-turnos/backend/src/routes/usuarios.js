@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { verificarAutenticacion } from "../auth.js";
+import { verificarAutenticacion } from "../middlewares/auth.js";
 const r = Router();
 
 r.get("/perfil", verificarAutenticacion, (req, res) => {
