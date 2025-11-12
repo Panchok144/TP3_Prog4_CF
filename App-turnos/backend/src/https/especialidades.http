@@ -1,0 +1,42 @@
+@url = http://localhost:8000
+
+# @name login
+POST {{url}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "francock",
+  "password": "bananita123"
+}
+
+###
+
+@token = {{login.response.body.token}}
+
+### Listar especialidades
+GET {{url}}/api/especialidades
+Authorization: Bearer {{token}}
+
+### Crear especialidad
+POST {{url}}/api/especialidades
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nombre": "Cirujano",
+  "descripcion": "Sistema nervioso"
+}
+
+### Actualizar especialidad
+PUT {{url}}/api/especialidades/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nombre": "Cardiologia",
+  "descripcion": "Cardio actualizada"
+}
+
+### Eliminar especialidad
+DELETE {{url}}/api/especialidades/7
+Authorization: Bearer {{token}}

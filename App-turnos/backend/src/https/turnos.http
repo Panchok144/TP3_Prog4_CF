@@ -1,0 +1,52 @@
+@url = http://localhost:8000
+
+
+# @name login
+POST {{url}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "francock",
+  "password": "bananita123"
+}
+
+###
+
+@token = {{login.response.body.token}}
+
+### Listar turnos
+GET {{url}}/api/turnos
+Authorization: Bearer {{token}}
+
+### Listar turnos por médico
+GET {{url}}/api/turnos?medico_id=1
+Authorization: Bearer {{token}}
+
+### Crear turno
+POST {{url}}/api/turnos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+
+  "paciente_id": 1,
+  "medico_id": 1,
+  "fecha": "2025-11-15",
+  "hora": "10:00",
+  "estado": "pendiente",
+  "observaciones": "Primera consulta"
+}
+
+### Cambiar estado del turno
+PATCH {{url}}/api/turnos/2/estado
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "estado": "atendido",
+  "observaciones": "Consulta de control"
+}
+
+### Eliminar turno
+DELETE {{url}}/api/turnos/2
+Authorization: Bearer {{token}}
