@@ -1,0 +1,31 @@
+:root {
+  --bg: #0b1220;
+  --card: #121b2e;
+  --muted: #9fb0c9;
+  --primary: #5dd0ff;
+  --ok: #42d392;
+  --warn: #ffb454;
+  --danger: #ff6b6b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji','Segoe UI Emoji'; background: var(--bg); color: white; }
+a { color: var(--primary); text-decoration: none; }
+header { display:flex; gap:1rem; align-items:center; padding: 12px 18px; background: #0f172a; position: sticky; top: 0; border-bottom: 1px solid #1f2b46;}
+nav a { padding: 6px 10px; border-radius: 8px; }
+nav a.active { background: #1b2540; }
+.container { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+.card { background: var(--card); border: 1px solid #1f2b46; border-radius: 14px; padding: 16px; }
+input, select, button, textarea {
+  background: #101827; color: white; border: 1px solid #27324a; border-radius: 10px; padding: 10px 12px; outline: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+button { cursor: pointer; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border-bottom: 1px solid #23304b; padding: 10px; text-align: left; }
+.flex { display:flex; gap:10px; }
+.grid { display:grid; gap:10px; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.right { margin-left: auto; }
+label { color: var(--muted); font-size: 14px; }
+small.muted { color: var(--muted); }
