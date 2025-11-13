@@ -13,11 +13,11 @@ Content-Type: application/json
 
 @token = {{login.response.body.token}}
 
-### Listar médicos (con nombre de especialidad)
+### Listar medicos
 GET {{url}}/api/medicos
 Authorization: Bearer {{token}}
 
-### Crear médico (usar id_especialidad existente)
+### Crear medico usando una especialidad que exista
 POST {{url}}/api/medicos
 Authorization: Bearer {{token}}
 Content-Type: application/json
@@ -29,7 +29,7 @@ Content-Type: application/json
   "matricula_profesional": "MP-102030"
 }
 
-### Modificar médico
+### Modificar medico
 PUT {{url}}/api/medicos/1
 Authorization: Bearer {{token}}
 Content-Type: application/json
@@ -41,6 +41,6 @@ Content-Type: application/json
   "matricula_profesional": "MP-102030"
 }
 
-### Eliminar médico
+### Eliminar medico
 DELETE {{url}}/api/medicos/1
 Authorization: Bearer {{token}}

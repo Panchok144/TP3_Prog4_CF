@@ -18,7 +18,7 @@ Content-Type: application/json
 GET {{url}}/api/turnos
 Authorization: Bearer {{token}}
 
-### Listar turnos por médico
+### Listar turnos por medico
 GET {{url}}/api/turnos?medico_id=1
 Authorization: Bearer {{token}}
 

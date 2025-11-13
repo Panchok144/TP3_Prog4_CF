@@ -23,7 +23,7 @@ export default function Login() {
 
   return (
     <div className="card" style={{maxWidth:420, margin:'40px auto'}}>
-      <h2>Iniciar sesión</h2>
+      <h2>Iniciar sesion</h2>
       <form className="grid" onSubmit={submit}>
         <label>Usuario</label>
         <input value={form.username} onChange={e=>setForm({...form, username:e.target.value})} required />
@@ -32,7 +32,7 @@ export default function Login() {
         {error && <small className="muted" style={{color:'var(--danger)'}}>{error}</small>}
         <button>Entrar</button>
       </form>
-      <small className="muted">¿No tenés cuenta? <Link to="/registro">Registrate</Link></small>
+      <small className="muted">¿No tienes cuenta? <Link to="/registro">Registrate</Link></small>
     </div>
   )
 }

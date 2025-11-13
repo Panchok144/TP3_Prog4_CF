@@ -55,22 +55,41 @@ r.post("/",
   }
 );
 
-r.patch("/:id/estado",
+r.put("/:id",
   param("id").isInt(),
-  body("estado").isIn(["pendiente","atendido","cancelado"]),
+  body("paciente_id").optional().isInt(),
+  body("medico_id").optional().isInt(),
+  body("fecha").optional().isISO8601(),
+  body("hora").optional().matches(/^([01]\d|2[0-3]):[0-5]\d$/),
+  body("estado").optional().isIn(["pendiente", "atendido", "cancelado"]),
   body("observaciones").optional().isString(),
   verificarValidaciones,
   async (req, res) => {
     const { id } = req.params;
-    const { estado, observaciones=null } = req.body;
+    const { paciente_id, medico_id, fecha, hora, estado, observaciones } = req.body;
+    
+    //Nota para acordarme:
+    // COALESCE hace que se actualizen los campos que yo quiera cambiar 
     const [result] = await db.execute(
-      "UPDATE turnos SET estado=?, observaciones=? WHERE id=?",
-      [estado, observaciones, id]
+      `UPDATE turnos 
+       SET 
+         paciente_id = COALESCE(?, paciente_id), 
+         medico_id   = COALESCE(?, medico_id),
+         fecha       = COALESCE(?, fecha),
+         hora        = COALESCE(?, hora),
+         estado      = COALESCE(?, estado),
+         observaciones = COALESCE(?, observaciones)
+       WHERE id=?`,
+      [paciente_id, medico_id, fecha, hora, estado, observaciones, id]
     );
-    if (!result.affectedRows) return res.status(404).json({ success:false, mensaje:"No encontrado" });
-    res.json({ success:true });
+
+    if (!result.affectedRows)
+      return res.status(404).json({ success:false, mensaje:"Turno no encontrado" });
+
+    res.json({ success:true, mensaje:"Turno actualizado correctamente" });
   }
 );
+
 
 r.delete("/:id",
   param("id").isInt(),

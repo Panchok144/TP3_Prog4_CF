@@ -13,16 +13,16 @@ function Topbar() {
   const nav = useNavigate()
   return (
     <header>
-      <b>🗓️ Gestión de Turnos</b>
+      <b>Gestion de Turnos </b>
       <nav className="flex">
-        <NavLink to="/medicos">Médicos</NavLink>
+        <NavLink to="/medicos">Medicos</NavLink>
         <NavLink to="/pacientes">Pacientes</NavLink>
         <NavLink to="/turnos">Turnos</NavLink>
       </nav>
       <div className="right">
         {isAuth ? (
           <span>👤 {username} <button onClick={() => { logout(); nav('/login') }}>Salir</button></span>
-        ) : <Link to="/login">Iniciar sesión</Link>}
+        ) : <Link to="/login">Iniciar sesion</Link>}
       </div>
     </header>
   )

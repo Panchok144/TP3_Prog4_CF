@@ -31,7 +31,7 @@ app.use("/api/medicos", rutasMedicos);
 app.use("/api/turnos", rutasTurnos);
 app.use("/api/especialidades", rutasEspecialidades);
 
-// Manejo de errores (al final)
+// Manejo de errores
 app.use(manejarErrores);
 
 const PORT = process.env.PORT || 8000;

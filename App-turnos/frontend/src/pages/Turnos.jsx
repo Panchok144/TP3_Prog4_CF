@@ -71,7 +71,7 @@ export default function Turnos() {
       <div className="card">
         <h3>Listado</h3>
         <table className="table">
-          <thead><tr><th>ID</th><th>Paciente</th><th>Médico</th><th>Fecha</th><th>Hora</th><th>Estado</th><th></th></tr></thead>
+          <thead><tr><th>ID</th><th>Paciente</th><th>Medico</th><th>Fecha</th><th>Hora</th><th>Estado</th><th></th></tr></thead>
           <tbody>
             {lista.map(t => (
               <tr key={t.id}>

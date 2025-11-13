@@ -37,15 +37,18 @@ export default function Medicos() {
         <h3>{editId?'Editar médico':'Nuevo médico'}</h3>
         {error && <small style={{color:'var(--danger)'}}>{error}</small>}
         <form className="grid grid-2" onSubmit={guardar}>
-          <div><label>Nombre</label><input value={form.nombre} onChange={e=>setForm({...form, nombre:e.target.value})} required/></div>
-          <div><label>Apellido</label><input value={form.apellido} onChange={e=>setForm({...form, apellido:e.target.value})} required/></div>
+           <div><label>Nombre</label>
+         <input value={form.nombre} onChange={e=>setForm({...form, nombre:e.target.value})} required/></div>
+          <div><label>Apellido</label>
+         <input value={form.apellido} onChange={e=>setForm({...form, apellido:e.target.value})} required/></div>
           <div><label>Especialidad</label>
             <select value={form.id_especialidad} onChange={e=>setForm({...form, id_especialidad:e.target.value})} required>
-              <option value="">Elegí una especialidad...</option>
+              <option value="">---Especialidad---</option>
               {esp.map(x => <option key={x.id_especialidad} value={x.id_especialidad}>{x.nombre}</option>)}
             </select>
           </div>
-          <div><label>Matrícula</label><input value={form.matricula_profesional} onChange={e=>setForm({...form, matricula_profesional:e.target.value})} required/></div>
+           <div><label>Matrícula</label>
+          <input value={form.matricula_profesional} onChange={e=>setForm({...form, matricula_profesional:e.target.value})} required/></div>
           <div className="flex">
             <button>{editId ? 'Guardar cambios':'Crear'}</button>
             {editId && <button type="button" onClick={()=>{ setEditId(null); setForm({ nombre:'', apellido:'', id_especialidad:'', matricula_profesional:'' })}}>Cancelar</button>}
@@ -56,7 +59,7 @@ export default function Medicos() {
       <div className="card">
         <h3>Listado</h3>
         <table className="table">
-          <thead><tr><th>ID</th><th>Nombre</th><th>Apellido</th><th>Especialidad</th><th>Matrícula</th><th></th></tr></thead>
+          <thead><tr><th>ID</th><th>Nombre</th><th>Apellido</th><th>Especialidad</th><th>Matricula</th><th></th></tr></thead>
           <tbody>
             {lista.map(m => (
               <tr key={m.id}>

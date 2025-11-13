@@ -33,11 +33,16 @@ export default function Pacientes() {
         <h3>{editId?'Editar paciente':'Nuevo paciente'}</h3>
         {error && <small style={{color:'var(--danger)'}}>{error}</small>}
         <form className="grid grid-3" onSubmit={guardar}>
-          <div><label>Nombre</label><input value={form.nombre} onChange={e=>setForm({...form, nombre:e.target.value})} required/></div>
-          <div><label>Apellido</label><input value={form.apellido} onChange={e=>setForm({...form, apellido:e.target.value})} required/></div>
-          <div><label>DNI</label><input value={form.dni} onChange={e=>setForm({...form, dni:e.target.value})} required/></div>
-          <div><label>Fecha nac.</label><input type="date" value={form.fecha_nacimiento} onChange={e=>setForm({...form, fecha_nacimiento:e.target.value})} required/></div>
-          <div><label>Obra social</label><input value={form.obra_social} onChange={e=>setForm({...form, obra_social:e.target.value})} required/></div>
+           <div><label>Nombre</label>
+           <input value={form.nombre} onChange={e=>setForm({...form, nombre:e.target.value})} required/></div>
+             <div><label>Apellido</label>
+              <input value={form.apellido} onChange={e=>setForm({...form, apellido:e.target.value})} required/></div>
+                 <div><label>DNI</label>
+                   <input value={form.dni} onChange={e=>setForm({...form, dni:e.target.value})} required/></div>
+                    <div><label>Fecha de nacimiento</label>
+                       <input type="date" value={form.fecha_nacimiento} onChange={e=>setForm({...form, fecha_nacimiento:e.target.value})} required/></div>
+                         <div><label>Obra social</label>
+                          <input value={form.obra_social} onChange={e=>setForm({...form, obra_social:e.target.value})} required/></div>
           <div className="flex"><button>{editId?'Guardar':'Crear'}</button></div>
         </form>
       </div>

@@ -34,7 +34,7 @@ export default function Registro() {
         {error && <small style={{color:'var(--danger)'}}>{error}</small>}
         <button>Crear cuenta</button>
       </form>
-      <small className="muted">¿Ya tenés cuenta? <Link to="/login">Entrá</Link></small>
+      <small className="muted">¿Ya tenes cuenta? <Link to="/login">Entra aqui</Link></small>
     </div>
   )
 }
