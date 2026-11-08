@@ -1,0 +1,16 @@
+# Dependencias
+node_modules/
+*/node_modules/
+
+# Variables de entorno
+.env
+*/.env
+
+# Compilación frontend
+dist/
+*/dist/
+
+# Logs y temporales
+*.log
+.DS_Store
+
