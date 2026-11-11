@@ -1,0 +1,54 @@
+@url = http://localhost:8000
+
+# @name login
+POST {{url}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin1234"
+}
+
+###
+
+@token = {{login.response.body.token}}
+
+### Listar viajes
+GET {{url}}/api/viajes
+Authorization: Bearer {{token}}
+
+### Listar viajes por vehículo
+GET {{url}}/api/viajes?vehiculo_id=1
+Authorization: Bearer {{token}}
+
+### Listar viajes por conductor
+GET {{url}}/api/viajes?conductor_id=1
+Authorization: Bearer {{token}}
+
+### Estadísticas de km por vehículo
+GET {{url}}/api/viajes/stats/vehiculo/1
+Authorization: Bearer {{token}}
+
+### Estadísticas de km por conductor
+GET {{url}}/api/viajes/stats/conductor/1
+Authorization: Bearer {{token}}
+
+### Crear viaje
+POST {{url}}/api/viajes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "vehiculo_id": 1,
+  "conductor_id": 1,
+  "fecha_salida": "2025-11-10T08:00:00",
+  "fecha_llegada": "2025-11-10T14:00:00",
+  "origen": "La Rioja",
+  "destino": "Cordoba",
+  "kilometros": 350,
+  "observaciones": "Viaje sin novedades"
+}
+
+### Eliminar viaje
+DELETE {{url}}/api/viajes/1
+Authorization: Bearer {{token}}
